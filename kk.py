@@ -1,4 +1,6 @@
+#!/usr/bin/python
 
+# 帮同学写着玩的
 import urllib2
 import time
 
