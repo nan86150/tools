@@ -15,6 +15,8 @@ class  MainFrame(wx.Frame):
         self.contentLabel = wx.StaticText(panel, -1, r"内容")
         self.contentText = wx.TextCtrl(panel, -1, "", size=(175, 100), style=wx.TE_MULTILINE)
         self.contentText.SetInsertionPoint(0)
+        # sizer.Add(self.contentLabel, 0, wx.ALIGN_CENTER)
+        # sizer.Add(self.contentText, 0, wx.ALIGN_CENTER)
 
         self.expressionLabel = wx.StaticText(panel, -1, r"正则表达式")
         self.expressionText = wx.TextCtrl(panel, -1, "", size=(175, -1))

@@ -5,7 +5,6 @@
 import wx
 import random
 
-
 class FindMineGame(wx.Frame):
 
     def __init__(self):
@@ -35,10 +34,8 @@ class FindMineGame(wx.Frame):
         num = self.mineMap[bId]
         if num == 0:
             self.buttons[bId].SetLabel(u"0")
-            # TODO 增加同时打开一大片
         elif num == -1:
             self.buttons[bId].SetLabel(u"*")
-            # TODO: 结束
         else:
             self.buttons[bId].SetLabel(str(num))
 
@@ -64,6 +61,36 @@ class FindMineGame(wx.Frame):
             mineNum[i] = -1
 
         return mineNum
+
+class MineMap():
+
+    def __init__(self):
+        self.mapSize = 10
+        self.mineNum = self.mapSize * self.mapSize
+        self.mineMap = self.initMap()
+
+    def initMap(self):
+        minePos = random.sample([i for i in range(self.mineNum)], 8)
+        mineNum = [0 for i in range(self.mineNum)]
+        tmp = (-(self.mapsize+1), -self.mapsize, -(self.mapsize-1),
+               -1,                                              1,
+               (self.mapsize+1),   self.mapsize,  (self.mapsize-1))      # 周围8个点
+
+        for i in minePos:
+            for j in tmp:
+                if 0<= (i+j) < self.mineNum:
+                    mineNum[i+j] += 1
+
+        for i in minePos:
+            mineNum[i] = -1
+
+        return mineNum
+
+
+    def get_map_size(self):
+        return self.mapSize
+
+
 
 if __name__ == '__main__':
     app = wx.PySimpleApp()
