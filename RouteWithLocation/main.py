@@ -12,7 +12,8 @@ baseUrl = "http://freeapi.ipip.net/"
 def getIpLocation(m):
     if m:
         ip = m.group(1)
-        return ip + urllib2.urlopen(baseUrl + ip).read()
+        # return ip + urllib2.urlopen(baseUrl + ip).read()
+        return urllib2.urlopen(baseUrl + ip).read()
     else:
         return ''
 
@@ -22,5 +23,6 @@ if __name__ == '__main__':
         content = sys.stdin.readline()
         if not content:
             break
-        print p.sub(getIpLocation, content)[:-1]
+        print content[:-1]
+        print p.sub(getIpLocation, content)
 
